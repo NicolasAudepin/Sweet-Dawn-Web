@@ -64,6 +64,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        Sweet Dawn Web Implementation v0
         <Webcam
           ref={webcamRef}
           muted={true} 
