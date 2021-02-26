@@ -1,106 +1,91 @@
 // Import dependencies
 import React, { useRef, useState, useEffect } from "react";
-import * as tf from "@tensorflow/tfjs";
-// 1. TODO - Import required model here
-// e.g. import * as tfmodel from "@tensorflow-models/tfmodel";
-import * as cocossd from "@tensorflow-models/coco-ssd";
-import Webcam from "react-webcam";
 import "./App.css";
-// 2. TODO - Import drawing utility here
-import { drawRect } from "./utilities";
-import * as midistuff from "./midistuff";
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import Block from "./Components/basecomponent"
+
+import styled from 'styled-components';
+const Blocks =[
+  {
+      id : '0webcaminput',
+      name : 'Webcam Input',
+      type : 'webcaminput'       
+  },
+  {
+      id : '1coco',
+      name : 'Coco',
+      type : 'coco'       
+  },
+  {
+      id : '2coco2midi',
+      name : 'Coco to Midi',
+      type : 'coco2midi'       
+  },
+  {
+      id : '3midioutput',
+      name : 'Midi Output',
+      type : 'midioutput'       
+  },
+
+]
+
+const BlocksList =  styled.ul`
+  list-style: none;
+  padding-left: 0;
+`
+
 
 
 
 function App() {
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
 
-  // Main function
-  const runCoco = async () => {
-    // 3. TODO - Load network 
-    // e.g. const net = await cocossd.load();
-    const net = await cocossd.load(); 
-    
-    //  Loop and detect stuff 
-    setInterval(() => {
-      detect(net);
-    }, 10);
-  };
+  const [blocks, updateBlocks] = useState(Blocks);
 
-  const detect = async (net) => {
-    // Check data is available
-    if (
-      typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4
-    ) {
-      // Get Video Properties
-      const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
+  function handleOnDragEnd(result){
+    if(!result.destination) return;
+  
+    const items =Array.from(blocks);
+    const [reorderedItem] = items.splice(result.source.index,1);
+    items.splice(result.destination.index, 0,reorderedItem);
+    updateBlocks(items);
+  }
 
-      // Set video width
-      webcamRef.current.video.width = videoWidth;
-      webcamRef.current.video.height = videoHeight;
-
-      // Set canvas height and width
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
-
-      // ALL THE DEEP STUFF HAPPENS HERE
-      const obj = await net.detect(video);
-      //console.log(obj);
-
-
-      // Draw mesh
-      const ctx = canvasRef.current.getContext("2d");
-
-      // 5. TODO - Update drawing utility
-      drawRect(obj, ctx)  
-    }
-  };
-
-  useEffect(()=>{runCoco()},[]); //starts the coco detection thread
-
-
+  
 
   return (
     <div className="App">
       <header className="App-header">
         <p>Sweet Dawn Web Implementation v0</p>
-        <p>Loading ...</p>
-        
-        <Webcam
-          ref={webcamRef}
-          muted={true} 
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 9,
-            width: 640,
-            height: 480,
-          }}
-        />
+        <DragDropContext onDragEnd = {handleOnDragEnd}>
+          <Droppable droppableId = "blocks">
+          {(provided) =>(
+            <BlocksList className = "blocks" {...provided.droppableProps} ref={provided.innerRef}>
+              {blocks.map(({id,name,type},index) =>{
+                return(
+                  <Draggable key={id} draggableId={id} index={index}>
+                    {(provided) =>(
+                      <li ref={provided.innerRef} 
+                        {...provided.draggableProps} 
+                        {...provided.dragHandleProps}>
+                        <Block
+                          name ={name}
+                          id={id}
+                          type={type} 
+                          input = {blocks[index - 1]}                         
+                        />
+                      </li>
+                    )}
+                  </Draggable>
+                )
+              })}
+              {provided.placeholder}
+            </BlocksList>
+          )}  
+          </Droppable>
+        </DragDropContext>
 
-        <canvas
-          ref={canvasRef}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
-            zindex: 8,
-            width: 640,
-            height: 480,
-          }}
-        />
+
+
       </header>
     </div>
   );
