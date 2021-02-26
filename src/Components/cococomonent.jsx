@@ -1,18 +1,15 @@
 // Import dependencies
 import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
-// 1. TODO - Import required model here
-// e.g. import * as tfmodel from "@tensorflow-models/tfmodel";
 import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
-import "./App.css";
+import "../App.css";
 // 2. TODO - Import drawing utility here
-import { drawRect } from "./utilities";
-import * as midistuff from "./midistuff";
+import { drawRect } from "../utilities";
 
 
 
-function App() {
+function Coco() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -106,4 +103,4 @@ function App() {
   );
 }
 
-export default App;
+export default Coco;

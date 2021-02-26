@@ -8,12 +8,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "bindings": "^1.5.0",
+    "easymidi": "^2.0.1",
     "fingerpose": "0.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "midi": "^1.0.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-scripts": "3.4.3",
-    "react-webcam": "^5.2.0"
+    "react-webcam": "^5.2.0",
+    "styled-components": "^5.2.1",
+    "webmidi": "^2.5.0"
   },
+  "homepage": "https://nicolasaudepin.github.io/Sweet-Dawn-Web/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
