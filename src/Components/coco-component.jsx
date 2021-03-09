@@ -2,14 +2,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as cocossd from "@tensorflow-models/coco-ssd";
-import Webcam from "react-webcam";
 import "../App.css";
 // 2. TODO - Import drawing utility here
 import { drawRect } from "../utilities";
 
 
 
-function Coco() {
+function CocoBlock() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -37,10 +36,7 @@ function Coco() {
       const videoWidth = webcamRef.current.video.videoWidth;
       const videoHeight = webcamRef.current.video.videoHeight;
 
-      // Set video width
-      webcamRef.current.video.width = videoWidth;
-      webcamRef.current.video.height = videoHeight;
-
+  
       // Set canvas height and width
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
@@ -87,7 +83,6 @@ function Coco() {
         <canvas
           ref={canvasRef}
           style={{
-            position: "absolute",
             marginLeft: "auto",
             marginRight: "auto",
             left: 0,
@@ -103,4 +98,4 @@ function Coco() {
   );
 }
 
-export default Coco;
+export default CocoBlock;

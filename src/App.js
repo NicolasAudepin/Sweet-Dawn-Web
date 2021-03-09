@@ -14,7 +14,7 @@ const Blocks =[
   {
       id : '1coco',
       name : 'Coco',
-      type : 'coco'       
+      type : 'cocodetection'       
   },
   {
       id : '2coco2midi',
