@@ -99,19 +99,27 @@ class MidiOut extends Component {
           <div>
                 <p>MIDI</p>
                 <div>
-                    Input
-                    <select id = "selectInput" onChange={this.HandleInChange}>                 
-                        {inputs}
-                    </select>                   
+                    <div>
+                        Input
+                        <select id = "selectInput" onChange={this.HandleInChange}>                 
+                            {inputs}
+                        </select>                   
+                    </div>
+                    <div>
+                        Output
+                        <select id = "selectOutput" onChange={this.HandleOutChange}>                 
+                            {outputs}
+                        </select>
+                        
+                    </div>
+                    <p id="demo"></p>
+
                 </div>
                 <div>
-                    Output
-                    <select id = "selectOutput" onChange={this.HandleOutChange}>                 
-                        {outputs}
-                    </select>
-                    
+                    <p> There Are Things on screen</p>
                 </div>
-                <p id="demo"></p>
+
+
           </div>
  
            )
