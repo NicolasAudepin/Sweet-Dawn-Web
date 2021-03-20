@@ -5,8 +5,6 @@ import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
 import "./App.css";
 import { drawRect } from "./utilities";
-import * as WebMidi from "webmidi"
-//https://github.com/djipco/webmidi
     
 function SweetDawn() {
   const webcamRef = useRef(null);
@@ -56,8 +54,6 @@ function SweetDawn() {
       drawRect(obj, ctx); 
     }
   };
-
-
 
   useEffect(()=>{runCoco()},[]);
 
