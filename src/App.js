@@ -9,13 +9,17 @@ import * as WebMidi from "webmidi"
 //https://github.com/djipco/webmidi
   
 import SweetDawn from "./SweetDawn"
+import MidiOut from "./MidiOut";
+
 function App() {
   
   return (
     <div className="App">
       <header className="App-header">
-      <h1>AAAAAh</h1>
+      <h1>SWEET DAWN</h1>
+      <MidiOut/>
       <SweetDawn/>
+
       </header>
     </div>
   );

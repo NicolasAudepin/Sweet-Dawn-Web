@@ -15,20 +15,7 @@ function SweetDawn() {
   // Main function
   const runCoco = async () => {
     
-    WebMidi.enable(function (err) {
-      if (err) {
-          console.log("WebMidi could not be enabled.", err);
-        } else {
-          console.log("WebMidi enabled!");
-          console.log(WebMidi.inputs);
-          console.log(WebMidi.outputs);
-          console.log(WebMidi.outputs.length);
-          var midout = [];
-          WebMidi.outputs.map((out,index) =>  options.push(<div>coucou</div>));
-          WebMidi.outputs.map((out,index) => console.log(WebMidi.outputs[index]));
-          WebMidi.outputs.map((out,index) => console.log(WebMidi.outputs[index].name));
-        }
-      });
+
 
     const net = await cocossd.load();
     console.log("coco model loaded.");
@@ -78,17 +65,7 @@ function SweetDawn() {
     <div className="App">
       <header className="App-header">
         <div>
-          <p>output</p>
-          {options}
-          {console.log("options")}
-          {console.log(options)}
-           
-          <select name="bad_day">
-            <option value="Sundayyyy">Sundayyyy</option>
-            
-            {options}
-            <option value="Sunday">Sunday</option>
-          </select>
+            WEBCAM
 
         </div>
         <div>
