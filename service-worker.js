@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Sweet-Dawn-Web/precache-manifest.c6c14fc097c9dd795ebb371019ca5730.js"
+  "/Sweet-Dawn-Web/precache-manifest.bca1ea9d6f9bc4e30d9fdc382f470e3a.js"
 );
 
 self.addEventListener('message', (event) => {
