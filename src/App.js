@@ -1,28 +1,37 @@
 // Import dependencies
-import React, { useRef, useState, useEffect } from "react";
-import * as tf from "@tensorflow/tfjs";
-import * as cocossd from "@tensorflow-models/coco-ssd";
-import Webcam from "react-webcam";
+import React, { Component } from "react";
 import "./App.css";
-import { drawRect } from "./utilities";
-import * as WebMidi from "webmidi"
+
 //https://github.com/djipco/webmidi
   
-import SweetDawn from "./SweetDawn"
+import SweetDawn from "./SweetDawn";
 import MidiOut from "./MidiOut";
+import DataVis from "./DataVis";
 
-function App() {
+class App extends Component {
+
+  state = {values:["aaaaah default"]}
+
+  callbackFunction = (childData) => {
+    this.setState({values: childData});
+  }
+
+  render(){
+    const {values} = this.state;
+    return (
+      <div className="App">
+        <header className="App-header">
+        <h1>SWEET DAWN</h1>
+        
+        <MidiOut/>
+        <DataVis values = {values}/>
+        <SweetDawn parentCallback = {this.callbackFunction}/>
   
-  return (
-    <div className="App">
-      <header className="App-header">
-      <h1>SWEET DAWN</h1>
-      <MidiOut/>
-      <SweetDawn/>
-
-      </header>
-    </div>
-  );
+        </header>
+      </div>
+    );
+  
+  }
 }
 
 export default App;

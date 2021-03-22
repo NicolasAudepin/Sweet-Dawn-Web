@@ -15,7 +15,7 @@
     "react": "^16.14.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.14.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.3",
     "react-webcam": "^5.2.0",
     "styled-components": "^5.2.1",
     "webmidi": "^2.5.0"

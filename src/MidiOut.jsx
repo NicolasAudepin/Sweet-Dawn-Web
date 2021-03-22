@@ -13,7 +13,7 @@ class MidiOut extends Component {
     constructor(props){
         super(props);
 
-        console.log("search box imported");
+        console.log("misi out constructor");
         this.state = {
             inputs : [],
             outputs: [],
@@ -27,6 +27,7 @@ class MidiOut extends Component {
         this.Sendnotes =  this.Sendnotes.bind(this)
         this.SetupMidi()
     };
+
 
     
 
