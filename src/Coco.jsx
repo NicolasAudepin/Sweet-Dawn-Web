@@ -6,18 +6,18 @@ import Webcam from "react-webcam";
 import "./App.css";
 import { drawRect } from "./utilities";
     
-function SweetDawn (props) {
+function Coco (props) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   let options = [];
   // Main function
-  function sendData() {
-    props.parentCallback(["People","Phones"]);
+  function sendData(data) {
+    props.parentCallback(data);
 }
 
   const runCoco = async () => {
     
-    sendData();
+    
 
     const net = await cocossd.load();
     console.log("coco model loaded.");
@@ -58,54 +58,55 @@ function SweetDawn (props) {
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
       drawRect(obj, ctx); 
+      //console.log(obj)
+      sendData(obj);
+
     }
   };
 
   useEffect(()=>{runCoco()},[]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>
-            WEBCAM
+    <div >
+      <h2>
+          WEBCAM
 
-        </div>
-        <div>
-          <Webcam
-            ref={webcamRef}
-            muted={true} 
-            style={{
-              position: "absolute",
-              marginLeft: "auto",
-              marginRight: "auto",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zindex: 9,
-              width: 640,
-              height: 480,
-            }}
-          />
+      </h2>
+      <div>
+        <Webcam
+          ref={webcamRef}
+          muted={true} 
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 9,
+            width: 640,
+            height: 480,
+          }}
+        />
 
-          <canvas
-            ref={canvasRef}
-            style={{
-              position: "absolute",
-              marginLeft: "auto",
-              marginRight: "auto",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zindex: 8,
-              width: 640,
-              height: 480,
-            }}
-          />
-        </div>
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: "absolute",
+            marginLeft: "auto",
+            marginRight: "auto",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            zindex: 8,
+            width: 640,
+            height: 480,
+          }}
+        />
+      </div>
         
-      </header>
     </div>
   );
 }
 
-export default SweetDawn;
+export default Coco;

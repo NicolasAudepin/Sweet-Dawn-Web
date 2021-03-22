@@ -4,28 +4,28 @@ import "./App.css";
 
 //https://github.com/djipco/webmidi
   
-import SweetDawn from "./SweetDawn";
+import Coco from "./Coco";
 import MidiOut from "./MidiOut";
 import DataVis from "./DataVis";
 
 class App extends Component {
 
-  state = {values:["aaaaah default"]}
+  state = {detections:[]}
 
-  callbackFunction = (childData) => {
-    this.setState({values: childData});
+  callbackSetDetections = (childData) => {
+    this.setState({detections: childData});
   }
 
   render(){
-    const {values} = this.state;
+    const {detections} = this.state;
     return (
       <div className="App">
         <header className="App-header">
         <h1>SWEET DAWN</h1>
         
-        <MidiOut/>
-        <DataVis values = {values}/>
-        <SweetDawn parentCallback = {this.callbackFunction}/>
+        
+        <DataVis detections = {detections}/>
+        <Coco parentCallback = {this.callbackSetDetections}/>
   
         </header>
       </div>
