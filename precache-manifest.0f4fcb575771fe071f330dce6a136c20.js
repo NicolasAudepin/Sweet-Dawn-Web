@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "29eaa4f4c21dc9bc7d76e33047dbfeae",
+    "revision": "32a0355a166a33c444b8d5be7a2be4b5",
     "url": "/Sweet-Dawn-Web/index.html"
   },
   {
-    "revision": "8908da37a10bd0ad4630",
+    "revision": "630381cfa5db02f5823e",
     "url": "/Sweet-Dawn-Web/static/css/main.6b40016b.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Sweet-Dawn-Web/static/js/2.4ef96402.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8908da37a10bd0ad4630",
-    "url": "/Sweet-Dawn-Web/static/js/main.c883d5b1.chunk.js"
+    "revision": "630381cfa5db02f5823e",
+    "url": "/Sweet-Dawn-Web/static/js/main.2dbc012a.chunk.js"
   },
   {
     "revision": "67ab43398177f48cb8a8",
